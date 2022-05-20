@@ -48,11 +48,9 @@ def view_score(course):
             if course == course_["course"]:
                 par_list = course_["par"]
                 for score_list in course_["scores"]:
-                    print("in score list for")
                     index = 0
                     for score in score_list:
                         result = score - par_list[index]
-                        print(result)
                         if score == 1:
                             object_map["Ace"] += 1
                         elif score == -2:
