@@ -40,25 +40,17 @@ def create_course_entry(window, course, course_data, entry_data):
         messagebox.showinfo("Info", "Data successfully added for {0}!".format(course))
         
 def view_score(course):
-    print("In view_score")
     objects = ["Ace", "Eagle", "Birdie", "Par", "Bogey", "Double Bogey", "3+"]
     object_map = {"Ace": 0, "Eagle": 0, "Birdie": 0, "Par": 0, "Bogey": 0, "Double Bogey": 0, "3+": 0}
     with open(filename, "r") as file_:
         data = json.load(file_)
         for course_ in data:
-            print("in course for")
-            print("course")
-            print(course)
-            print(course_)
             if course == course_["course"]:
                 par_list = course_["par"]
                 for score_list in course_["scores"]:
                     print("in score list for")
                     index = 0
                     for score in score_list:
-                        print("Score Here: " + str(score))
-                        print(score)
-                        print(score_list)
                         result = score - par_list[index]
                         print(result)
                         if score == 1:
@@ -76,8 +68,6 @@ def view_score(course):
                         elif result > 2:
                             object_map["3+"] += 1
                         index += 1
-    print(object_map)
-    print("GRAPH STUFF HAPPENING")
     
     y_pos = np.arange(len(objects))
     stats = [object_map["Ace"], object_map["Eagle"], object_map["Birdie"], object_map["Par"], object_map["Bogey"], object_map["Double Bogey"], object_map["3+"]]
